@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     # Screen 2: Sales & Items Management
     'screen_2_sales_items.items_management',
     'screen_2_sales_items.sales_analytics',
+    
+    # Screen 3: Customer Analytics & Stocks
+    'screen_3_customer_and_stocks.customer_analytics',
 ]
 
 MIDDLEWARE = [
