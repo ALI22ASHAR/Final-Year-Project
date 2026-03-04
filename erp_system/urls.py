@@ -20,4 +20,13 @@ urlpatterns = [
     
     # Screen 4: Accounts & Finance APIs
     path('api/accounts/', include('accounts.urls', namespace='accounts')),
+    
+    # Screen 5: User Management APIs
+    path('api/user-management/', include('user_management.urls', namespace='user_management')),
+    
+    # Other Module APIs
+    path('api/invoices/', include('invoices.urls')),
+    path('api/products/', include('products.urls')),
+    path('api/purchases/', include('purchases.urls')),
+    path('api/sales/', include('sales.urls')),
 ]

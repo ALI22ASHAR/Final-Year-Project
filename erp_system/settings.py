@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'purchases',
     'accounts',
     'dashboard',
+    'user_management',
     
     # Screen 2: Sales & Items Management
     'screen_2_sales_items.items_management',
