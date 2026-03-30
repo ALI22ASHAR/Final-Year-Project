@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { useTheme } from '../../context/ThemeContext';
 import { useAuth } from '../../context/AuthContext';
 import { Moon, Sun, Monitor, User, Bell, Shield, KeyRound, MonitorSmartphone, Globe, Puzzle, Eye, EyeOff } from 'lucide-react';
 import api from '../../services/api';
 
 const Settings = () => {
-    const { theme, setTheme } = useTheme();
     const { user } = useAuth();
     const [activeSection, setActiveSection] = useState('Appearance');
 
@@ -92,25 +90,21 @@ const Settings = () => {
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <button 
                     onClick={() => {
-                        setTheme('light');
-                        window.document.documentElement.classList.remove('dark');
-                        localStorage.setItem('theme', 'light');
+                        document.documentElement.classList.remove('dark');
                     }}
-                    className={`p-6 rounded-xl border-2 flex flex-col items-center gap-3 transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95 ${theme === 'light' ? 'border-primary bg-primary/5 text-primary' : 'border-gray-200 dark:border-slate-700 hover:border-primary/50 dark:text-gray-300'}`}
+                    className="p-6 rounded-xl border-2 border-gray-200 dark:border-slate-700 flex flex-col items-center gap-3 transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95 text-textMain dark:text-gray-300 hover:border-primary/50"
                 >
                     <Sun className="w-8 h-8" />
-                    <span className="font-bold text-sm">Light</span>
+                    <span className="font-bold text-sm">Light Mode</span>
                 </button>
                 <button 
                     onClick={() => {
-                        setTheme('dark');
-                        window.document.documentElement.classList.add('dark');
-                        localStorage.setItem('theme', 'dark');
+                        document.documentElement.classList.add('light');
                     }}
-                    className={`p-6 rounded-xl border-2 flex flex-col items-center gap-3 transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95 ${theme === 'dark' ? 'border-primary bg-primary/10 text-primary dark:text-sky-300' : 'border-gray-200 dark:border-slate-700 hover:border-primary/50 text-textMuted'}`}
+                    className="p-6 rounded-xl border-2 border-gray-200 dark:border-slate-700 flex flex-col items-center gap-3 transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95 text-textMain dark:text-gray-300 hover:border-primary/50"
                 >
                     <Moon className="w-8 h-8" />
-                    <span className="font-bold text-sm">Dark</span>
+                    <span className="font-bold text-sm">Dark Mode</span>
                 </button>
             </div>
         </div>
