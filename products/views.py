@@ -20,7 +20,7 @@ def product_list(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET', 'PUT', 'DELETE'])
+@api_view(['GET', 'PUT', 'PATCH', 'DELETE'])
 def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
 
@@ -30,6 +30,13 @@ def product_detail(request, pk):
 
     if request.method == 'PUT':
         serializer = ProductSerializer(product, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    if request.method == 'PATCH':
+        serializer = ProductSerializer(product, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
