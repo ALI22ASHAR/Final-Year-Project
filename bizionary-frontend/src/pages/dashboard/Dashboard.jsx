@@ -92,6 +92,10 @@ const Dashboard = () => {
         };
 
         fetchDashboardData();
+
+        // Keep dashboard data in sync and recover automatically if backend starts later.
+        const refreshTimer = setInterval(fetchDashboardData, 15000);
+        return () => clearInterval(refreshTimer);
     }, []);
 
     if (loading) {
@@ -126,8 +130,8 @@ const Dashboard = () => {
             {/* Header/Hero Section */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-2xl font-extrabold text-textMain">Business Overview</h1>
-                    <p className="text-textMuted text-sm mt-1">Live business snapshot from your current ERP data.</p>
+                    <h1 className="text-2xl font-extrabold text-textMain dark:text-slate-100">Business Overview</h1>
+                    <p className="text-textMuted dark:text-slate-300 text-sm mt-1">Live business snapshot from your current ERP data.</p>
                 </div>
             </div>
 
